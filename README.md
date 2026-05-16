@@ -1,10 +1,5 @@
 This project builds a debian based apple container for running OpenCode.
 
-Run with 
-```sh
-./sboc
-```
-
 
 ## Security
 Mounts only the workspace where container is run.
