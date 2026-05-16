@@ -47,11 +47,6 @@ RUN npm pack "opencode-ai@${OPENCODE_VERSION}" --pack-destination=/tmp >/dev/nul
  && npm cache clean --force
 
 USER node
-WORKDIR /workspace
-
-# Pre-create opencode's data dir as the node user so the runtime-mounted named
-# volume inherits node ownership instead of becoming root-owned (EACCES at startup).
-RUN mkdir -p /home/node/.local/share/opencode
 
 ARG GOOSE_VERSION
 ARG SQLC_VERSION
