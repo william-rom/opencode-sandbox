@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Bind-mount caches from a dedicated host dir 
+CACHE_ROOT="$HOME/.cache/opencode-sandbox"
+mkdir -p "$CACHE_ROOT"/{go-mod,go-build,opencode-data}
+
+exec container run --rm -it \
+  --name "opencode-$$" \
+  -v "$PWD":/workspace \
+  -v "$HOME/.opencode:/home/node/.opencode:ro" \
+  -w /workspace \
+  -v "$CACHE_ROOT/go-mod":/home/node/go/pkg/mod \
+  -v "$CACHE_ROOT/go-build":/home/node/.cache/go-build \
+  -v "$CACHE_ROOT/opencode-data":/home/node/.local/share/opencode \
+  -e INTILITY_API_KEY \
+  opencode-sandbox:latest "$@"
