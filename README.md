@@ -1,4 +1,9 @@
-This project builds a debian based apple container for running OpenCode.
+This project builds a debian based apple container for running OpenCode in a more islolated environment.
+
+## How to use
+Build apple container with `build.sh`.
+
+Example executable in `sboc`
 
 
 ## Security
