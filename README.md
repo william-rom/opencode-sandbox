@@ -16,7 +16,12 @@ Apple Container VM with a toolchain pre-installed for the technologies I work wi
 
 3. Build the container with `build.sh`. 
 
-4. Run the container in your directory of choice. Example executable in `sboc`.
+4. Start the Container system service 
+```sh
+container system start
+```
+
+5. Run the container in your directory of choice. Example executable in `sboc`.
 
 ## Security
 By default, coding agents act on behalf of the user on the user's machine. 
