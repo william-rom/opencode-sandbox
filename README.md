@@ -25,19 +25,23 @@ a few actions taken to protect host credentials and filesystem from common attac
 
 
 **The agent does not have full filesystem access**
+
 This container bind-mounts only the current directory.
 This leaves directories like `~/.ssh`, the macOS keychain, $HOME and runtime configuration files un-reachable to the agent.
 
 **OpenCode config can not be edited**
+
 We mount the opencode config read-only.
 This stops a compromised agent from redirecting future sessions to attacker controlled 
 endpoints, changing default permissions or wiring malicious MCPs.
 
 **Dependencies are cached separately from host dependencies**
+
 Dependency and build cache is persisted across containers for speed,
 but is stored separate from host caches. Can be disabled as described in `sboc`.
 
 **External dependencies are SHA pinned**
+
 This reduces the supply chain risk during image build.
 
 
