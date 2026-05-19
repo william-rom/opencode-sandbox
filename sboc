@@ -5,6 +5,8 @@ set -euo pipefail
 CACHE_ROOT="$HOME/.cache/opencode-sandbox"
 mkdir -p "$CACHE_ROOT"/{go-mod,go-build,opencode-data}
 
+# Go mod and opencode cache is persited for speed. 
+# Can be disabled for extra security by removing the three CACHE_ROOT lines.
 exec container run --rm -it \
   --name "opencode-$$" \
   -v "$PWD":/workspace \
