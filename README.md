@@ -16,10 +16,7 @@ Apple Container VM with a toolchain pre-installed for the technologies I work wi
 
 3. Build the container with `build.sh`. 
 
-4. Run the container. Example executable in `sboc` runs the container.
-Should not be run in $HOME as that removes the security gains we get 
-from the mounting strategy.
-
+4. Run the container in your directory of choice. Example executable in `sboc`.
 
 ## Security
 By default, coding agents act on behalf of the user on the user's machine. 

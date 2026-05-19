@@ -7,6 +7,9 @@ mkdir -p "$CACHE_ROOT"/{go-mod,go-build,opencode-data}
 
 # Go mod and opencode cache is persited for speed. 
 # Can be disabled for extra security by removing the three CACHE_ROOT lines.
+#
+# Should not be run in $HOME as that removes the security gains we get 
+# from the mounting strategy.
 exec container run --rm -it \
   --name "opencode-$$" \
   -v "$PWD":/workspace \
