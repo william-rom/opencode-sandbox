@@ -2,7 +2,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-# Pinned values. Last refreshed: 2026-05-16
+# Pinned values. Last refreshed: 2026-05-26
 NODE_DIGEST="sha256:689c11043dad91472750cd824c97dd5e2318e9dd6f954e492fe7af0135d33ceb"
 GO_VERSION="1.26.3"
 GO_SHA256="9d89a3ea57d141c2b22d70083f2c8459ba3890f2d9e818e7e933b75614936565"
@@ -14,8 +14,8 @@ PYTHON_VERSION="3.11.15"
 GOOSE_VERSION="v3.27.1"
 SQLC_VERSION="v1.31.1"
 SWAG_VERSION="v1.16.6"
-OPENCODE_VERSION="1.15.3"
-OPENCODE_INTEGRITY="sha512-nQQfqqRqDo4NIvc4wwLd7+jvKStlbPal6HuuJMbkpLlW6nOraI4z506+unWtP4L3KDh6mIGXTlaFCjAyiBFZlA=="
+OPENCODE_VERSION="1.15.10"
+OPENCODE_INTEGRITY="sha512-/JOvvD50/fVW3se3dS6ZAZ3E4P/A8uD6+XmcuRzr2WGzoDvEjAvrYagT7plv5SB+yL+lcN5JIKPdPbyw74ih9g=="
 
 exec container build \
   --build-arg NODE_DIGEST="${NODE_DIGEST}" \
