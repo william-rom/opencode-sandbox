@@ -56,6 +56,15 @@ RUN go install github.com/pressly/goose/v3/cmd/goose@${GOOSE_VERSION} \
  && go install github.com/swaggo/swag/cmd/swag@${SWAG_VERSION} \
  && go clean -modcache
 
+ARG RUFF_VERSION
+ARG RUFF_SHA256
+RUN curl -fsSLo /tmp/ruff.tgz \
+      "https://github.com/astral-sh/ruff/releases/download/${RUFF_VERSION}/ruff-aarch64-unknown-linux-gnu.tar.gz" \
+  && echo "${RUFF_SHA256}  /tmp/ruff.tgz" | sha256sum -c - \
+  && tar -C /usr/local/bin --strip-components=1 -xzf /tmp/ruff.tgz \
+        ruff-aarch64-unknown-linux-gnu/ruff \
+  && rm /tmp/ruff.tgz
+
 ARG PYTHON_VERSION
 RUN uv python install ${PYTHON_VERSION}
 
