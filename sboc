@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Bind-mount caches from a dedicated host dir 
 CACHE_ROOT="$HOME/.cache/opencode-sandbox"
-mkdir -p "$CACHE_ROOT"/{go-mod,go-build,opencode-data}
+mkdir -p "$CACHE_ROOT"/{go-mod,go-build,opencode-data,gh-config}
 
 # Go mod and opencode cache is persited for speed. 
 # Can be disabled for extra security by removing the three CACHE_ROOT lines.
@@ -18,5 +18,6 @@ exec container run --rm -it \
   -v "$CACHE_ROOT/go-mod":/home/node/go/pkg/mod \
   -v "$CACHE_ROOT/go-build":/home/node/.cache/go-build \
   -v "$CACHE_ROOT/opencode-data":/home/node/.local/share/opencode \
+  -v "$CACHE_ROOT/gh-config":/home/node/.config/gh \
   -e INTILITY_API_KEY \
   opencode-sandbox:latest "$@"

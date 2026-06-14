@@ -49,4 +49,5 @@ but is stored separate from host caches. Can be disabled as described in `sboc`.
 
 This reduces the supply chain risk during image build.
 
-
+## Github CLI
+The container persists it gh cli token.

@@ -24,6 +24,15 @@ RUN curl -fsSLo /tmp/just.tgz \
  && tar -C /usr/local/bin -xzf /tmp/just.tgz just \
  && rm /tmp/just.tgz
 
+ARG GH_VERSION
+ARG GH_SHA256
+RUN curl -fsSLo /tmp/gh.tgz \
+      "https://github.com/cli/cli/releases/download/${GH_VERSION}/gh_${GH_VERSION#v}_linux_arm64.tar.gz" \
+ && echo "${GH_SHA256}  /tmp/gh.tgz" | sha256sum -c - \
+ && tar -C /usr/local/bin --strip-components=1 -xzf /tmp/gh.tgz \
+        gh_${GH_VERSION#v}_linux_arm64/bin/gh \
+ && rm /tmp/gh.tgz
+
 ARG UV_VERSION
 ARG UV_SHA256
 RUN curl -fsSLo /tmp/uv.tgz \
@@ -46,6 +55,15 @@ RUN npm pack "opencode-ai@${OPENCODE_VERSION}" --pack-destination=/tmp >/dev/nul
  && rm "${TARBALL}" \
  && npm cache clean --force
 
+ARG RUFF_VERSION
+ARG RUFF_SHA256
+RUN curl -fsSLo /tmp/ruff.tgz \
+      "https://github.com/astral-sh/ruff/releases/download/${RUFF_VERSION}/ruff-aarch64-unknown-linux-gnu.tar.gz" \
+  && echo "${RUFF_SHA256}  /tmp/ruff.tgz" | sha256sum -c - \
+  && tar -C /usr/local/bin --strip-components=1 -xzf /tmp/ruff.tgz \
+        ruff-aarch64-unknown-linux-gnu/ruff \
+  && rm /tmp/ruff.tgz
+
 USER node
 
 ARG GOOSE_VERSION
@@ -55,15 +73,6 @@ RUN go install github.com/pressly/goose/v3/cmd/goose@${GOOSE_VERSION} \
  && go install github.com/sqlc-dev/sqlc/cmd/sqlc@${SQLC_VERSION} \
  && go install github.com/swaggo/swag/cmd/swag@${SWAG_VERSION} \
  && go clean -modcache
-
-ARG RUFF_VERSION
-ARG RUFF_SHA256
-RUN curl -fsSLo /tmp/ruff.tgz \
-      "https://github.com/astral-sh/ruff/releases/download/${RUFF_VERSION}/ruff-aarch64-unknown-linux-gnu.tar.gz" \
-  && echo "${RUFF_SHA256}  /tmp/ruff.tgz" | sha256sum -c - \
-  && tar -C /usr/local/bin --strip-components=1 -xzf /tmp/ruff.tgz \
-        ruff-aarch64-unknown-linux-gnu/ruff \
-  && rm /tmp/ruff.tgz
 
 ARG PYTHON_VERSION
 RUN uv python install ${PYTHON_VERSION}
