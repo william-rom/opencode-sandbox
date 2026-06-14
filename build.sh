@@ -22,6 +22,7 @@ OPENCODE_VERSION="1.17.6"
 OPENCODE_INTEGRITY="sha512-pJpt21bapyvQ5Mye0M0IY3VGGDF48ddRdV7goyEVuNTtGo1OFmyuMCFsWX4ALbj8bHf+ebwTtVtCa2fwoI+uEQ=="
 
 exec container build \
+  --no-cache \
   --build-arg NODE_DIGEST="${NODE_DIGEST}" \
   --build-arg GO_VERSION="${GO_VERSION}" \
   --build-arg GO_SHA256="${GO_SHA256}" \

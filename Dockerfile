@@ -29,7 +29,7 @@ ARG GH_SHA256
 RUN curl -fsSLo /tmp/gh.tgz \
       "https://github.com/cli/cli/releases/download/${GH_VERSION}/gh_${GH_VERSION#v}_linux_arm64.tar.gz" \
  && echo "${GH_SHA256}  /tmp/gh.tgz" | sha256sum -c - \
- && tar -C /usr/local/bin --strip-components=1 -xzf /tmp/gh.tgz \
+ && tar -C /usr/local/bin --strip-components=2 -xzf /tmp/gh.tgz \
         gh_${GH_VERSION#v}_linux_arm64/bin/gh \
  && rm /tmp/gh.tgz
 
