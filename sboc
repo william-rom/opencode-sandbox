@@ -11,6 +11,8 @@ mkdir -p "$CACHE_ROOT"/{go-mod,go-build,opencode-data,gh-config}
 # Should not be run in $HOME as that removes the security gains we get 
 # from the mounting strategy.
 exec container run --rm -it \
+  --cpus 4 \
+  --memory 4G \
   --name "opencode-$$" \
   -v "$PWD":/workspace \
   -v "$HOME/.opencode:/home/node/.opencode:ro" \
