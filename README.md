@@ -34,11 +34,20 @@ a few actions taken to protect host credentials and filesystem from common attac
 This container bind-mounts only the current directory.
 This leaves directories like `~/.ssh`, the macOS keychain, $HOME and runtime configuration files un-reachable to the agent.
 
-### OpenCode config can not be edited
+### OpenCode config is sandbox-specific and can not be edited
 
-We mount the opencode config read-only.
-This stops a compromised agent from redirecting future sessions to attacker controlled 
-endpoints, changing default permissions or wiring malicious MCPs.
+The sandbox reads its config from `~/.config/sboc/opencode.json` on the host — a
+dedicated file, not the host's own `~/.opencode`. Sandbox defaults (permissions,
+model, provider, MCPs) can therefore be tightened without affecting host sessions.
+Seed it once with:
+
+```sh
+mkdir -p ~/.config/sboc && cp ~/.opencode/opencode.json ~/.config/sboc/
+```
+
+It is mounted read-only at `/home/node/.opencode`. This stops a compromised agent
+from redirecting future sessions to attacker controlled endpoints, changing default
+permissions or wiring malicious MCPs.
 
 ### Dependencies are cached separately from host dependencies
 

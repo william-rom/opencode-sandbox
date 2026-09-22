@@ -3,19 +3,19 @@ set -euo pipefail
 
 # Bind-mount caches from a dedicated host dir 
 CACHE_ROOT="$HOME/.cache/opencode-sandbox"
-mkdir -p "$CACHE_ROOT"/{go-mod,go-build,opencode-data,gh-config}
+
+# Sandbox-only opencode config (permissions, model, provider)
+CONFIG_DIR="$HOME/.config/sboc"
+
 
 # Go mod and opencode cache is persited for speed. 
 # Can be disabled for extra security by removing the three CACHE_ROOT lines.
-#
-# Should not be run in $HOME as that removes the security gains we get 
-# from the mounting strategy.
 exec container run --rm -it \
   --cpus 4 \
   --memory 4G \
   --name "opencode-$$" \
   -v "$PWD":/workspace \
-  -v "$HOME/.opencode:/home/node/.opencode:ro" \
+  -v "$CONFIG_DIR:/home/node/.opencode:ro" \
   -w /workspace \
   -v "$CACHE_ROOT/go-mod":/home/node/go/pkg/mod \
   -v "$CACHE_ROOT/go-build":/home/node/.cache/go-build \
