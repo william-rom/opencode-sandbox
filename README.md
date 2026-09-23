@@ -12,7 +12,7 @@ Apple Container VM with a toolchain pre-installed for the technologies I work wi
 ## How to use
 1. Set up [Container](https://github.com/apple/container) on your mac.
 
-2. Customize the toolchain to your use.
+2. Customize the toolchain to your use. Instructions for tool upgrades in AGENTS.md.
 
 3. Build the container with `build.sh`. 
 
