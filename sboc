@@ -21,5 +21,4 @@ exec container run --rm -it \
   -v "$CACHE_ROOT/go-build":/home/node/.cache/go-build \
   -v "$CACHE_ROOT/opencode-data":/home/node/.local/share/opencode \
   -v "$CACHE_ROOT/gh-config":/home/node/.config/gh \
-  -e INTILITY_API_KEY \
   opencode-sandbox:latest "$@"
