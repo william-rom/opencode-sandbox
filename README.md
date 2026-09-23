@@ -10,7 +10,7 @@ This project narrows that attack surface by running OpenCode in a lightweight
 Apple Container VM with a toolchain pre-installed for the technologies I work with.
 
 **Note:** this setup is in no way fool-proof, but gives a look into how agents
-can be run more securely in a semi-sandboxed environment.
+can be run more securely in a locked down environment.
 
 
 ## How to use
