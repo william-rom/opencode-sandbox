@@ -1,3 +1,4 @@
+# This file contains the tools I want available to the agent.
 ARG NODE_DIGEST
 FROM node:22-slim@${NODE_DIGEST}
 
