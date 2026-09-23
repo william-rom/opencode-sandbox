@@ -16,7 +16,7 @@ can be run more securely in a semi-sandboxed environment.
 ## How to use
 1. Set up [Container](https://github.com/apple/container) on your mac.
 
-2. Customize the toolchain to your use. Instructions for tool upgrades in AGENTS.md.
+2. Customize the toolchain to your use. For ease of upgrades, create istructions for tool upgrades in AGENTS.md.
 
 3. Start the Container system service 
 ```sh
@@ -27,12 +27,12 @@ container system start
 
 5. Set up your sandbox config. (see sandbox-specific config section)
 
-6. Add the sboc script to path.
+6. Add the run container script to path. E.g.
 ```sh
 ln -s "$PWD/sboc" ~/.local/bin/sboc.
 ```
 
-6. Run the container in your directory of choice. Example executable in `sboc`.
+6. Run the container in your directory of choice. 
 
 ## Security
 By default, coding agents act on behalf of the user on the user's machine. 
