@@ -29,7 +29,7 @@ container system start
 
 6. Add the run container script to path. E.g.
 ```sh
-ln -s "$PWD/sboc" ~/.local/bin/sboc.
+ln -s "$PWD/sboc" ~/.local/bin/sboc
 ```
 
 6. Run the container in your directory of choice. 
