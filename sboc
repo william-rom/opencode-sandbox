@@ -16,10 +16,10 @@ exec container run --rm -it \
   --name "opencode-$$" \
   -v "$PWD":/workspace \
   -v "$CONFIG_DIR:/home/node/.opencode:ro" \
+  -v "$CACHE_ROOT/opencode-data":/home/node/.local/share/opencode \
   -w /workspace \
   -v "$CACHE_ROOT/go-mod":/home/node/go/pkg/mod \
   -v "$CACHE_ROOT/go-build":/home/node/.cache/go-build \
-  -v "$CACHE_ROOT/opencode-data":/home/node/.local/share/opencode \
   -v "$CACHE_ROOT/gh-config":/home/node/.config/gh \
   --entrypoint bash \
   opencode-sandbox:latest "$@"
