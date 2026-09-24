@@ -8,8 +8,13 @@ CACHE_ROOT="$HOME/.cache/opencode-sandbox"
 CONFIG_DIR="$HOME/.config/sboc"
 
 
-# Go mod and opencode cache is persited for speed. 
-# Can be disabled for extra security by removing the three CACHE_ROOT lines.
+# Go cache is persited for speed. 
+# Can be disabled for extra security.
+#
+# Opencode config and data is mounted for persisting sessions and auth.
+# -v "$CONFIG_DIR:/home/node/.opencode:ro" \
+# -v "$CACHE_ROOT/opencode-data":/home/node/.local/share/opencode \
+#
 exec container run --rm -it \
   --cpus 4 \
   --memory 4G \
